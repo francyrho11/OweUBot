@@ -1,2 +1,2 @@
 # OweUBot
-A simple Telegram bot for keeping track of small favors we owe or debts that we're owed.
+A simple Telegram bot for keeping track of small favors you owe or debts that you're owed.
