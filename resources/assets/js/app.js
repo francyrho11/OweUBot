@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+import SweetScroll from "sweet-scroll";
 
 window.Vue = require('vue');
 
@@ -20,3 +21,19 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sweetScroll = new SweetScroll();
+  const hash = window.location.hash;
+  const needsInitialScroll = document.getElementById(hash.substr(1)) != null;
+
+  if (needsInitialScroll) {
+    window.location.hash = "";
+  }
+
+  window.addEventListener("load", () => {
+    if (needsInitialScroll) {
+      sweetScroll.to(hash, { updateURL: "replace" });
+    }
+  }, false);
+}, false);
