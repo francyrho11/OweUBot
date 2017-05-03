@@ -18,3 +18,9 @@ Route::get('/', function () {
 Route::get('/documentation', function() {
   return view('documentation');
 });
+
+Route::post('/'.config('telegram.bot_token').'/webhook', function () {
+    $updates = Telegram::getWebhookUpdates();
+
+    return 'ok';
+});

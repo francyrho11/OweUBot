@@ -13,7 +13,7 @@ return [
     | https://core.telegram.org/bots#botfather
     |
     */
-    'bot_token' => env('TELEGRAM_BOT_TOKEN', '365833786:AAGX9yZQczQFh2r0OANJKwX_bMuDjH_DSBs'),
+    'bot_token' => env('TELEGRAM_BOT_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,6 +56,7 @@ return [
     |
     */
     'commands' => [
-        App\TelegramCommands\HelpCommand::class,
+      App\TelegramCommands\HelpCommand::class,
+      App\TelegramCommands\RicchiardinoCommand::class,
     ],
 ];
