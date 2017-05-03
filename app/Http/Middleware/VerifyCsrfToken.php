@@ -12,6 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+      '/365833786:AAGX9yZQczQFh2r0OANJKwX_bMuDjH_DSBs/webhook'  // for webhook i need to remove this route from CSRF verification
     ];
 }
