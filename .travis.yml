@@ -1,24 +1,24 @@
+os:
+  - linux
+
 language: php
 
 php:
-  - 5.5.9
+  - '7.1'
 
-env:
-  global:
-    - setup=basic
-    - APP_ENV=staging
-    - APP_DEBUG=true
-    - APP_KEY=xxxx
-    - DB_CONNECTION=mysql
-    - CACHE_DRIVER=file
-    - SESSION_DRIVER=file
-    - QUEUE_DRIVER=sync
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+  - cp .env.travis .env
+  - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
+  - nvm install 7.7.1
+  - npm install npm@latest -g
+  - npm install -g jshint
+  - npm install
 
-sudo: false
-
-install:
-- if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-source; fi
-- if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-stable; fi
-- if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-lowest --prefer-stable; fi
-
-script: vendor/bin/phpunit
+script:
+  - vendor/bin/phpunit --coverage-text
+  - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+  - npm run production
+  - jshint resources/assets/js/modules/*
