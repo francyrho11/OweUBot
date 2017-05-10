@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
       Commands\ProcessCommand::class,
       Commands\SetWebhook::class,
+      Commands\RemoveWebhook::class,
     ];
 
     /**
