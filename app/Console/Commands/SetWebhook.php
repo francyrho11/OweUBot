@@ -24,7 +24,7 @@ class SetWebhook extends Command {
     public function handle() {
       try {
         $response = \Telegram::setWebhook(['url' => env('APP_URL').'/'.config('telegram.bot_token').'/webhook']);
-        $this->info($response->description);
+        $this->info($response["description"]);
       } catch (\Exception $e) {
         $this->error('Error: ' . $e->getMessage());
       }
