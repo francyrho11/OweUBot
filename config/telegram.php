@@ -57,6 +57,7 @@ return [
     */
     'commands' => [
       App\TelegramCommands\HelpCommand::class,
+      App\TelegramCommands\StartCommand::class,
       App\TelegramCommands\OweUCommand::class,
     ],
 ];
