@@ -2,6 +2,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Telegram;
+use Exception;
 
 class SetWebhook extends Command {
     /**
@@ -23,11 +25,9 @@ class SetWebhook extends Command {
      */
     public function handle() {
       try {
-        echo 'url ' . env('APP_URL').'/'.config('telegram.bot_token').'/webhook';
-        $response = \Telegram::setWebhook(['url' => env('APP_URL').'/'.config('telegram.bot_token').'/webhook']);
-        var_dump($response);
-        //$this->info($response["description"]);
-      } catch (\Exception $e) {
+        $response = Telegram::setWebhook(['url' => env('APP_URL').'/'.config('telegram.bot_token').'/webhook']);
+        $this->info($response->getDecodedBody()["description"] . PHP_EOL);
+      } catch (Exception $e) {
         $this->error('Error: ' . $e->getMessage());
       }
     }

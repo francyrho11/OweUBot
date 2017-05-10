@@ -2,6 +2,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Telegram;
+use Exception;
 
 class ProcessCommand extends Command {
     /**
@@ -23,9 +25,9 @@ class ProcessCommand extends Command {
      */
     public function handle() {
       try {
-        $result = \Telegram::commandsHandler(false);
+        $result = Telegram::commandsHandler(false);
         $this->info('Processati ' . count($result) . ' messaggi.');
-      } catch (\Exception $e) {
+      } catch (Exception $e) {
         $this->error('Errore: ' . $e->getMessage());
       }
     }

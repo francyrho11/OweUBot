@@ -20,7 +20,6 @@ Route::get('/documentation', function() {
 });
 
 Route::post('/'.config('telegram.bot_token').'/webhook', function () {
-    $updates = Telegram::getWebhookUpdates();
-
+    $updates = Telegram::commandsHandler(true);
     return 'ok';
 });

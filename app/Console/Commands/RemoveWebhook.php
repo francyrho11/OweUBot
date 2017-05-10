@@ -2,6 +2,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Telegram;
+use Exception;
 
 class RemoveWebhook extends Command {
     /**
@@ -23,9 +25,9 @@ class RemoveWebhook extends Command {
      */
     public function handle() {
       try {
-        $response = \Telegram::removeWebhook();
-        $this->info($response);
-      } catch (\Exception $e) {
+        $response = Telegram::removeWebhook();
+        $this->info($response->getDecodedBody()["description"] . PHP_EOL);
+      } catch (Exception $e) {
         $this->error('Error: ' . $e->getMessage());
       }
     }
