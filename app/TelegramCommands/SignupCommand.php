@@ -2,6 +2,7 @@
 
 use Telegram\Bot\Commands\Command;
 use Telegram\Bot\Actions;
+use \App\User;
 
 class SignupCommand extends Command
 {
@@ -19,25 +20,25 @@ class SignupCommand extends Command
   * @inheritdoc
   */
   public function handle($arguments) {
+    // typing
+    $this->replyWithChatAction(['action' => Actions::TYPING]);
+    // get message
+    $user = $this->getUpdate();
+    // get fields
+    $fields = array();
+    $fields["telegram_id"] = $user["message"]["chat"]["id"];
+    $fields["first_name"] = $user["message"]["chat"]["first_name"];
+    $fields["last_name"] = $user["message"]["chat"]["last_name"];
 
-    //var_dump($this->getUpdate());
-
-    // This will send a message using `sendMessage` method behind the scenes
-    // $this->replyWithMessage(['text' => 'Hello! Welcome to OweUBot, here are the available commands:']);
-    //
-    // // This will update the chat status to typing...
-    // $this->replyWithChatAction(['action' => Actions::TYPING]);
-    //
-    // // This will prepare a list of available commands and send the user.
-    // $commands = $this->getTelegram()->getCommands();
-    //
-    // // Build the list
-    // $response = '';
-    // foreach ($commands as $name => $command) {
-    //     $response .= sprintf('/%s - %s' . PHP_EOL, $name, $command->getDescription());
-    // }
-    //
-    // // Reply with the commands list
-    // $this->replyWithMessage(['text' => $response]);
+    // check if user already exist in the db
+    $user = new User;
+    if(!$user->userExist($fields["telegram_id"])){
+      // new record
+      $user->store($fields);
+      // success message
+      $this->replyWithMessage(['text' => 'Signup successfull']);
+    } else {
+      $this->replyWithMessage(['text' => 'You are already signup']);
+    }
   }
 }

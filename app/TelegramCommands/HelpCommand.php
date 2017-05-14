@@ -12,7 +12,7 @@ class HelpCommand extends Command
   /**
   * @var string Command Description
   */
-  protected $description = "Default welcome message";
+  protected $description = "First steps to get you started";
 
   /**
   * @inheritdoc

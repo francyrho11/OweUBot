@@ -24,4 +24,34 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * Store the fields in a new record.
+     *
+     * @param array
+     */
+    public function store($fields) {
+        // Validate the request...
+        $user = new User;
+        // Store fields
+        $user->telegram_id = $fields["telegram_id"];
+        $user->first_name = $fields["first_name"];
+        $user->last_name = $fields["last_name"];
+        // Save record
+        $user->save();
+    }
+
+    /**
+     * Check if user already exist.
+     *
+     * @param string
+     */
+    public function userExist($telegram_id) {
+        // Validate the request...
+        $result = $this::where('telegram_id', $telegram_id)->count();
+        if($result === 0){
+          return false;
+        }
+        return true;
+    }
 }
