@@ -17,7 +17,7 @@ class RemoveWebhook extends Command {
      *
      * @var string
      */
-    protected $description = 'Remove ';
+    protected $description = 'Remove the bot web hook';
     /**
      * Execute the console command.
      *

@@ -17,7 +17,7 @@ class ProcessCommand extends Command {
      *
      * @var string
      */
-    protected $description = 'Processa i messaggi in arrivo del bot';
+    protected $description = 'Process messages from the bot';
     /**
      * Execute the console command.
      *

@@ -12,13 +12,14 @@ class OweUCommand extends Command
   /**
   * @var string Command Description
   */
-  protected $description = "Main command, create a new credit for the specified user. Starts with /owe";
+  protected $description = "Main command, create a new debt or credit";
 
   /**
   * @inheritdoc
   */
   public function handle($arguments) {
     //var_dump($arguments);
-    $this->replyWithMessage(['text' => 'Do it.']);
+    var_dump($this->getUpdate());
+    //$this->replyWithMessage(['text' => 'Do it.']);
   }
 }
