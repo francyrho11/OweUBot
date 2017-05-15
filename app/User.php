@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'telegram_id', 'first_name', 'last_name',
+        'telegram_user_id', 'telegram_group_id', 'first_name', 'last_name',
     ];
 
     /**
@@ -34,7 +34,8 @@ class User extends Authenticatable
         // Validate the request...
         $user = new User;
         // Store fields
-        $user->telegram_id = $fields["telegram_id"];
+        $user->telegram_user_id = $fields["telegram_user_id"];
+        $user->telegram_group_id = $fields["telegram_group_id"];
         $user->first_name = $fields["first_name"];
         $user->last_name = $fields["last_name"];
         // Save record
@@ -46,9 +47,13 @@ class User extends Authenticatable
      *
      * @param string
      */
-    public function userExist($telegram_id) {
+    public function userExist($fields) {
         // Validate the request...
-        $result = $this::where('telegram_id', $telegram_id)->count();
+        $result = $this::where([
+          'telegram_user_id' => $fields["telegram_user_id"],
+          'telegram_group_id' => $fields["telegram_group_id"]
+          ])->count();
+
         if($result === 0){
           return false;
         }
