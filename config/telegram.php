@@ -58,8 +58,9 @@ return [
     'commands' => [
       App\TelegramCommands\CommandsCommand::class,
       App\TelegramCommands\HelpCommand::class,
-      App\TelegramCommands\InfoCommand::class,
       App\TelegramCommands\OweUCommand::class,
+      App\TelegramCommands\LogoutCommand::class,
       App\TelegramCommands\SignupCommand::class,
+      App\TelegramCommands\StartCommand::class,
     ],
 ];

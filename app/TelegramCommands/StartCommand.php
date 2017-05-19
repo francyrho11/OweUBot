@@ -3,12 +3,12 @@
 use Telegram\Bot\Commands\Command;
 use Telegram\Bot\Actions;
 
-class InfoCommand extends Command
+class StartCommand extends Command
 {
     /**
   * @var string Command Name
   */
-  protected $name = "info";
+  protected $name = "start";
 
   /**
   * @var string Command Description
