@@ -1,6 +1,7 @@
 <?php namespace App\TelegramCommands;
 
 use Telegram\Bot\Commands\Command;
+use Telegram\Bot\Keyboard\Keyboard;
 
 class OweUCommand extends Command
 {
@@ -19,7 +20,16 @@ class OweUCommand extends Command
   */
   public function handle($arguments) {
     //var_dump($arguments);
-    var_dump($this->getUpdate());
-    //$this->replyWithMessage(['text' => 'Do it.']);
+    $keyboard = Keyboard::make()
+    ->inline()
+    ->row(
+        Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data']),
+        Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
+    );
+
+    $this->replyWithMessage([
+      'text' => 'Hello World',
+      'reply_markup' => $keyboard
+    ]);
   }
 }
