@@ -14,7 +14,7 @@
         <!-- Styles -->
         <link href="/css/app.css" rel="stylesheet">
 
-        <title>Laravel</title>
+        <title>OweUBot - Telegram Debts Managment Bot</title>
 
     </head>
     <body>

@@ -8,7 +8,7 @@
         <!-- Styles -->
         <link href="/css/app.css" rel="stylesheet">
 
-        <title>Documentation</title>
+        <title>OweUBot - Documentation</title>
 
     </head>
     <body>
