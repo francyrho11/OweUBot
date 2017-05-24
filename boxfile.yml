@@ -1,0 +1,26 @@
+# add a MySQL database
+data.db:
+  image: nanobox/mysql:5.7
+
+run.config:
+  # install php and associated runtimes
+  engine: php
+
+  # php engine configuration (php version, extensions, etc)
+  engine.config:
+
+    # sets the php version to 7.0
+    runtime: php-7.0
+
+    # enables php extensions
+    extensions:
+      - iconv
+      - pdo
+      - pdo_mysql
+      - mbstring
+      - tokenizer
+      - session
+      - zip
+      - dom
+      - xml
+      - ctype
