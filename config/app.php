@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        OweUBot\Providers\AppServiceProvider::class,
+        OweUBot\Providers\AuthServiceProvider::class,
+        // OweUBot\Providers\BroadcastServiceProvider::class,
+        OweUBot\Providers\EventServiceProvider::class,
+        OweUBot\Providers\RouteServiceProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
 
     ],

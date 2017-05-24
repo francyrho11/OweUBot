@@ -1,5 +1,5 @@
 <?php
-namespace App\Console\Commands;
+namespace OweUBot\Console\Commands;
 
 use Illuminate\Console\Command;
 use Telegram;

@@ -1,4 +1,4 @@
-<?php namespace App\TelegramCommands;
+<?php namespace OweUBot\TelegramCommands;
 
 use Telegram\Bot\Commands\Command;
 

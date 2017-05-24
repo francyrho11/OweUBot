@@ -1,8 +1,8 @@
-<?php namespace App\TelegramCommands;
+<?php namespace OweUBot\TelegramCommands;
 
 use Telegram\Bot\Commands\Command;
 use Telegram\Bot\Actions;
-use \App\User;
+use \OweUBot\User;
 
 class LogoutCommand extends Command
 {

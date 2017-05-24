@@ -1,7 +1,9 @@
-<?php namespace App\TelegramCommands;
+<?php namespace OweUBot\TelegramCommands;
 
 use Telegram\Bot\Commands\Command;
 use Telegram\Bot\Keyboard\Keyboard;
+use \OweUBot\User;
+
 use Telegram;
 
 class OweUCommand extends Command
@@ -37,11 +39,14 @@ class OweUCommand extends Command
         'selective' => true
       ]);
 
-      $this->replyWithMessage([
+      $result = $this->replyWithMessage([
         'text' => "Do you want to add a credit or debit?",
         'reply_to_message_id' => $update["message"]["message_id"],
         'reply_markup' => $reply_markup
       ]);
+
+      //print(print_r($result,true));
+
 
     } else {
       $this->replyWithMessage(['text' => 'OweUBot needs to run in a group to work']);

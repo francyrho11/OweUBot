@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace OweUBot\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
