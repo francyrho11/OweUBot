@@ -3,6 +3,8 @@
 use Telegram\Bot\Commands\Command;
 use Telegram\Bot\Keyboard\Keyboard;
 use \OweUBot\User;
+use \OweUBot\Step;
+use \OweUBot\TelegramCommands\SignupCommand;
 
 use Telegram;
 
@@ -45,8 +47,20 @@ class OweUCommand extends Command
         'reply_markup' => $reply_markup
       ]);
 
-      //print(print_r($result,true));
+      // save in steps table
+      $step = new Step;
+      $user = new User;
+      $signup = new SignupCommand;
 
+      $step->message_id = $result["message_id"];
+      $step->step = 1;
+      $step->user_id = $user->getId($result["reply_to_message"]["from"]["id"], $result["chat"]["id"]);
+      // user doesn't exist, let's create it
+      if(!$step->user_id){
+        $step->user_id = $signup->register($result);
+      }
+      // save step 1
+      $step->save();
 
     } else {
       $this->replyWithMessage(['text' => 'OweUBot needs to run in a group to work']);

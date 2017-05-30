@@ -51,4 +51,17 @@ class SignupCommand extends Command
       $this->replyWithMessage(['text' => 'OweUBot needs to run in a group to work']);
     }
   }
+
+  public function register($message){
+    //get fields
+    $fields = array();
+    $fields["telegram_user_id"] = $message["reply_to_message"]["from"]["id"];
+    $fields["telegram_group_id"] = $message["chat"]["id"];
+    $fields["first_name"] = $message["reply_to_message"]["from"]["first_name"];
+    $fields["last_name"] = $message["reply_to_message"]["from"]["last_name"];
+
+    $user = new User;
+    // return created record id
+    return $user->store($fields);
+  }
 }

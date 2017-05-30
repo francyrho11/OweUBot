@@ -40,15 +40,17 @@ class User extends Authenticatable
         $user->last_name = $fields["last_name"];
         // Save record
         $user->save();
+
+        return $user->id;
     }
 
     /**
      * Check if user already exist.
      *
-     * @param string
+     * @param array
      */
     public function userExist($fields) {
-        // Validate the request...
+        // Search user
         $result = $this::where([
           'telegram_user_id' => $fields["telegram_user_id"],
           'telegram_group_id' => $fields["telegram_group_id"]
@@ -58,5 +60,24 @@ class User extends Authenticatable
           return false;
         }
         return true;
+    }
+
+    /**
+     * Get ID from user and group id
+     *
+     * @param string
+     * @return integer
+     */
+    public function getId($user_id, $group_id) {
+      // Search user
+      $result = $this::where([
+        'telegram_user_id' => $user_id,
+        'telegram_group_id' => $group_id
+        ])->first();
+
+      if(!$result){
+        return false;
+      }
+      return $result;
     }
 }

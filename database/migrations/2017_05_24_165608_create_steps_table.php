@@ -20,9 +20,9 @@ class CreateStepsTable extends Migration
             // step number
             $table->smallInteger('step');
             // step 1 - credit / debit
-            $table->boolean('credit');
+            $table->boolean('credit')->nullable();
             // step 2 - to who
-            $table->integer('to_user_id')->unsigned();
+            $table->integer('to_user_id')->unsigned()->nullable();
             $table->foreign('to_user_id')->references('id')->on('users');
             // user's user id who is using the bot
             $table->integer('user_id')->unsigned();
