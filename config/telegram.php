@@ -56,11 +56,11 @@ return [
     |
     */
     'commands' => [
-      App\TelegramCommands\CommandsCommand::class,
-      App\TelegramCommands\HelpCommand::class,
-      App\TelegramCommands\OweUCommand::class,
-      App\TelegramCommands\LogoutCommand::class,
-      App\TelegramCommands\SignupCommand::class,
-      App\TelegramCommands\StartCommand::class,
+      OweUBot\TelegramCommands\CommandsCommand::class,
+      OweUBot\TelegramCommands\HelpCommand::class,
+      OweUBot\TelegramCommands\OweUCommand::class,
+      OweUBot\TelegramCommands\LogoutCommand::class,
+      OweUBot\TelegramCommands\SignupCommand::class,
+      OweUBot\TelegramCommands\StartCommand::class,
     ],
 ];
